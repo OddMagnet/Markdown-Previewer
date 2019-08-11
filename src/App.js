@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
-import marked from 'marked';
 import './App.css';
 
-// Allow linebreaks in the marked module
-marked.setOptions({
-  breaks: true
-});
-
-// Create a renderer and make links add a _blank target
-const renderer = new marked.Renderer();
-renderer.link = function (href, title, text) {
-  return `<a target="_blank" href="${href}">${text} </a>`;
-};
+// Import components
+import { Toolbar, Editor, Preview } from './Components';
 
 class App extends Component {
   constructor(props) {
@@ -83,41 +74,6 @@ class App extends Component {
       </div>
     )
   }
-}
-
-// Toolbar for both editor and preview use
-const Toolbar = (props) => {
-  return (
-    <div className='toolbar'>
-      <i className='fa fa-free-code-camp' title='no-stack-dub-sack' />
-      {props.text}
-      <i className={props.icon} onClick={props.onClick} />
-    </div>
-  );
-};
-
-// Editor Component
-const Editor = (props) => {
-  return (
-    <textarea
-      id='editor'
-      onChange={props.onChange}
-      type='text'
-      value={props.markdown}
-    />
-  );
-}
-
-// Preview Component
-const Preview = (props) => {
-  return (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: marked(props.markdown, { renderer: renderer })
-      }}
-      id='preview'
-    />
-  );
 }
 
 // Placeholder for instant preview when opening the site
