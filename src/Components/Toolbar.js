@@ -4,7 +4,7 @@ import React from 'react';
 const Toolbar = (props) => {
     return (
         <div className='toolbar'>
-            <i className='fa fa-free-code-camp' title='no-stack-dub-sack' />
+            <i className='fa fa-free-code-camp'/>
             {props.text}
             <i className={props.icon} onClick={props.onClick} />
         </div>
